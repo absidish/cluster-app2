@@ -16,7 +16,7 @@
       "template": "apache",
       "peer-criteria": "gr2",
       "size": "${webtype}",
-      "peer-layout": "d1"
+      "peer-layout": "d2"
     }
   ],
   "peer-layouts": [
