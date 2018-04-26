@@ -6,27 +6,15 @@
   "containers": [
     {
       "hostname": "db",
-      "template": "mysql@280dcda67a67d071970ff838d0331c33c0c04710",
+      "template": "debian-stretch@f9d6a36b3e9b1d985008e482680f2ddf584d98bd",
       "peer-criteria": "gr1",
       "size": "${dbtype}",
       "peer-layout": "d1"
-    },
-    {
-      "hostname": "web",
-      "template": "apache",
-      "peer-criteria": "gr2",
-      "size": "${webtype}",
-      "peer-layout": "d2"
     }
   ],
   "peer-layouts": [
     {
       "name": "d1",
-      "peer-count": "${peerCount}",
-      "container-per-peer": "1"
-    },
-     {
-      "name": "d2",
       "peer-count": "1",
       "container-per-peer": "1"
     }
@@ -34,33 +22,8 @@
   "peer-criteria": [
     {
       "name": "gr1"
-    },
-    {
-      "name": "gr2"
     }
   ],
-  "ansible-configuration": {
-    "source-url": "https://github.com/absidish/cluster-app2/archive/master.zip",
-    "ansible-playbook": "main.yml",
-    "extra-vars": [
-    ],
-    "groups": [
-      {
-        "name": "monitoring_servers",
-        "python-interpreter": "/usr/bin/python3",
-        "hostnames": [
-          "db"
-        ]
-      },
-      {
-        "name": "web_servers",
-        "python-interpreter": "/usr/bin/python3",
-        "hostnames": [
-          "web"
-        ]
-      }
-    ]
-  },
   "user-variables": {
     "environmentName": {
       "description": "Enter the environment name",
